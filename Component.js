@@ -9,7 +9,45 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
         dependencies : {
             libs : ["sap.m", "sap.ui.layout"],
             components : []
-        }
+        },
+		routing : {
+			config : {
+				routerClass : sap.ui.demo.tdg.MyRouter,
+				viewType : "XML",
+				viewPath : "sap.ui.demo.tdg.view",
+				targetAggregation : "detailPages",
+				clearTarget : false
+			},
+			routes : [
+				{
+					pattern : "",
+					name : "main",
+					view : "Master",
+					targetAggregation : "masterPages",
+					targetControl : "idAppControl",
+					subroutes : [
+						{
+							pattern : "{product}/:tab:",
+							name : "product",
+							view : "Detail"
+						}
+					]
+				},
+				{
+					name : "catchallMaster",
+					view : "Master",
+					targetAggregation : "masterPages",
+					targetControl : "idAppControl",
+					subroutes : [
+						{
+							pattern : ":all*:",
+							name : "catchallDetail",
+							view : "NotFound"
+						}
+					]
+				}
+			]
+		}
     },
         
     rootView : "sap.ui.demo.tdg.view.App",
