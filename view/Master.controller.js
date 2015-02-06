@@ -1,3 +1,5 @@
+jQuery.sap.require("sap.ui.demo.tdg.util.Formatter");
+
 sap.ui.core.mvc.Controller.extend("sap.ui.demo.tdg.view.Master", {
     onInit : function() {
 		this.oUpdateFinishedDeferred = jQuery.Deferred();
