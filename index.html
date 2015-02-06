@@ -18,6 +18,8 @@
 		
 		<script>
             sap.ui.getCore().attachInit(function() {
+                // The use of the Shell is to control the width of the app on the desktop
+                // Placing the app's core inside a Shell container will give you appropriate left and right vertical margins.
                 new sap.m.Shell({
                     app: new sap.ui.core.ComponentContainer({
                         height : "100%",
